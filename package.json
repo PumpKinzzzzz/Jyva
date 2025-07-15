@@ -1,0 +1,24 @@
+{
+  "name": "jyva",
+  "version": "1.0.0",
+  "description": "Jyva is a minimalist image transformation toolkit inspired by the aesthetic of Low-tech Magazine. It allows you to convert images into compressed monochrome PNGs using grayscale quantization, customizable dithering algorithms (like Floyd–Steinberg), and optional color tinting. Ideal for eco web design.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "@types/pngjs": "^6.0.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "pngjs": "^7.0.0"
+  },
+  "type": "commonjs"
+}
