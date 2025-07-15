@@ -4,3 +4,5 @@ Jyva is a minimalist image transformation toolkit largely inspired by the pictur
 sources:
 https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/ (Ctrl + f -> dithered images)
 
+
+(Installation and use manual coming soon)
