@@ -6,8 +6,8 @@ Jyva is a minimalist image transformation toolkit inspired by the aesthetic of L
 
 Here's how Jyva transforms your images through each step:
 
-| Original | Grayscale | Dithered | Green Tinted | PNG-8 Palette |
-|----------|-----------|----------|--------------|---------------|
+| Original | Grayscale | Dithered | Green Tinted |
+|----------|-----------|----------|--------------|
 | ![Original](testpictures/mononoke.png) | ![Grayscale](testpictures/mononoke-gray.png) | ![Dithered](testpictures/mononoke-dither.png) | ![Green](testpictures/mononoke-green.png) |
 
 ## Installation
