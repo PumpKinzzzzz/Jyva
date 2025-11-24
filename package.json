@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
-    "pngjs": "^7.0.0"
+    "pngjs": "^7.0.0",
+    "upng-js": "^2.1.0"
   },
   "type": "commonjs"
 }
