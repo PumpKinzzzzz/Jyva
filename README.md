@@ -97,21 +97,6 @@ const tinted = makeGreen(dithered);
 - Maintains the dithered pattern
 - Creates the Low-tech Magazine aesthetic
 
-#### 4. PNG-8 Palette Encoding
-
-![Palette Result](testpictures/mononoke-green-palette.png)
-
-The [`encodePNG8`](src/core/palette.ts) function creates optimized palette-based PNGs:
-
-```typescript
-const png8bytes = encodePNG8(tinted, width, height);
-```
-
-**Effect**: Optimizes for web with palette compression
-- Uses a fixed 4-color green palette
-- Significantly reduces file size
-- Maintains visual quality through smart color mapping
-
 ## Complete Workflow
 
 The typical Jyva workflow processes an image through four stages:
@@ -119,7 +104,6 @@ The typical Jyva workflow processes an image through four stages:
 1. **Original** → **Grayscale**: Color to monochrome conversion
 2. **Grayscale** → **Dithered**: Adds texture and reduces banding
 3. **Dithered** → **Tinted**: Applies characteristic green colorization
-4. **Tinted** → **PNG-8**: Optimizes for web with palette compression
 
 Each step progressively reduces file size while maintaining visual appeal, perfect for sustainable web design.
 
