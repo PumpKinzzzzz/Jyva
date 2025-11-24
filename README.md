@@ -8,7 +8,7 @@ Here's how Jyva transforms your images through each step:
 
 | Original | Grayscale | Dithered | Green Tinted | PNG-8 Palette |
 |----------|-----------|----------|--------------|---------------|
-| ![Original](testpictures/mononoke.png) | ![Grayscale](testpictures/mononoke-gray.png) | ![Dithered](testpictures/mononoke-dither.png) | ![Green](testpictures/mononoke-green.png) | ![Palette](testpictures/mononoke-green-palette.png) |
+| ![Original](testpictures/mononoke.png) | ![Grayscale](testpictures/mononoke-gray.png) | ![Dithered](testpictures/mononoke-dither.png) | ![Green](testpictures/mononoke-green.png) |
 
 ## Installation
 
@@ -24,6 +24,8 @@ Make sure you have the required dependencies:
 ## Usage
 
 ### Basic Example
+
+![Original to Grayscale](testpictures/mononoke.png) → 
 
 ```typescript
 import fs from "fs";
@@ -50,7 +52,7 @@ fs.writeFileSync("output.png", png8bytes);
 
 #### 1. Grayscale Conversion
 
-![Original to Grayscale](testpictures/mononoke.png) → ![Grayscale Result](testpictures/mononoke-gray.png)
+![Grayscale Result](testpictures/mononoke-gray.png)
 
 The [`toGrayscale`](src/core/grayscale.ts) function converts color images to grayscale using the standard luminance formula:
 
@@ -65,7 +67,7 @@ const gray = toGrayscale(rgba, 4); // 4 gray levels
 
 #### 2. Bayer Dithering
 
-![Grayscale to Dithered](testpictures/mononoke-gray.png) → ![Dithered Result](testpictures/mononoke-dither.png)
+![Dithered Result](testpictures/mononoke-dither.png)
 
 The [`bayerDither`](src/core/floyds_steinberg.ts) function applies ordered dithering using Bayer matrices:
 
@@ -82,7 +84,7 @@ const dithered = bayerDither(gray, width, 4, 8);
 
 #### 3. Color Tinting
 
-![Dithered to Tinted](testpictures/mononoke-dither.png) → ![Tinted Result](testpictures/mononoke-green.png)
+![Tinted Result](testpictures/mononoke-green.png)
 
 The [`makeGreen`](src/core/floyds_steinberg.ts) function applies a subtle green tint:
 
@@ -97,7 +99,7 @@ const tinted = makeGreen(dithered);
 
 #### 4. PNG-8 Palette Encoding
 
-![Tinted to Palette](testpictures/mononoke-green.png) → ![Palette Result](testpictures/mononoke-green-palette.png)
+![Palette Result](testpictures/mononoke-green-palette.png)
 
 The [`encodePNG8`](src/core/palette.ts) function creates optimized palette-based PNGs:
 
