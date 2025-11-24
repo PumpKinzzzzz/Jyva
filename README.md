@@ -2,6 +2,14 @@
 
 Jyva is a minimalist image transformation toolkit inspired by the aesthetic of Low-tech Magazine. It allows you to convert images into compressed monochrome PNGs using grayscale quantization, customizable dithering algorithms (like Bayer dithering), and optional color tinting. Ideal for eco web design.
 
+## Visual Example
+
+Here's how Jyva transforms your images through each step:
+
+| Original | Grayscale | Dithered | Green Tinted | PNG-8 Palette |
+|----------|-----------|----------|--------------|---------------|
+| ![Original](testpictures/mononoke.png) | ![Grayscale](testpictures/mononoke-gray.png) | ![Dithered](testpictures/mononoke-dither.png) | ![Green](testpictures/mononoke-green.png) | ![Palette](testpictures/mononoke-green-palette.png) |
+
 ## Installation
 
 ```bash
@@ -42,18 +50,22 @@ fs.writeFileSync("output.png", png8bytes);
 
 #### 1. Grayscale Conversion
 
+![Original to Grayscale](testpictures/mononoke.png) → ![Grayscale Result](testpictures/mononoke-gray.png)
+
 The [`toGrayscale`](src/core/grayscale.ts) function converts color images to grayscale using the standard luminance formula:
 
 ```typescript
 const gray = toGrayscale(rgba, 4); // 4 gray levels
 ```
 
-**Effect**: Converts `mononoke.png` → `mononoke-gray.png`
-- Original color image becomes monochrome
+**Effect**: Converts color image to monochrome
 - Uses luminance weighting (0.299×R + 0.587×G + 0.114×B)
 - Quantizes to specified number of gray levels
+- Preserves image detail while reducing color complexity
 
 #### 2. Bayer Dithering
+
+![Grayscale to Dithered](testpictures/mononoke-gray.png) → ![Dithered Result](testpictures/mononoke-dither.png)
 
 The [`bayerDither`](src/core/floyds_steinberg.ts) function applies ordered dithering using Bayer matrices:
 
@@ -63,12 +75,14 @@ const dithered = bayerDither(gray, width, 4, 8);
 // 8 = Bayer matrix size (2, 4, or 8 supported)
 ```
 
-**Effect**: Converts `mononoke-gray.png` → `mononoke-dither.png`
-- Reduces color banding through patterned noise
+**Effect**: Adds texture and reduces color banding
+- Creates patterned noise for smoother gradients
 - Matrix size 8 provides smoother transitions than 4
-- Creates a distinctive retro/low-tech aesthetic
+- Distinctive retro/low-tech aesthetic
 
 #### 3. Color Tinting
+
+![Dithered to Tinted](testpictures/mononoke-dither.png) → ![Tinted Result](testpictures/mononoke-green.png)
 
 The [`makeGreen`](src/core/floyds_steinberg.ts) function applies a subtle green tint:
 
@@ -76,12 +90,14 @@ The [`makeGreen`](src/core/floyds_steinberg.ts) function applies a subtle green 
 const tinted = makeGreen(dithered);
 ```
 
-**Effect**: Converts `mononoke-dither.png` → `mononoke-green.png`
-- Applies green color cast (R×0.85, G×1.0, B×0.75)
+**Effect**: Applies characteristic green colorization
+- Green color cast (R×0.85, G×1.0, B×0.75)
 - Maintains the dithered pattern
-- Creates the characteristic Low-tech Magazine look
+- Creates the Low-tech Magazine aesthetic
 
 #### 4. PNG-8 Palette Encoding
+
+![Tinted to Palette](testpictures/mononoke-green.png) → ![Palette Result](testpictures/mononoke-green-palette.png)
 
 The [`encodePNG8`](src/core/palette.ts) function creates optimized palette-based PNGs:
 
@@ -89,7 +105,7 @@ The [`encodePNG8`](src/core/palette.ts) function creates optimized palette-based
 const png8bytes = encodePNG8(tinted, width, height);
 ```
 
-**Effect**: Converts `mononoke-green.png` → `mononoke-green-palette.png`
+**Effect**: Optimizes for web with palette compression
 - Uses a fixed 4-color green palette
 - Significantly reduces file size
 - Maintains visual quality through smart color mapping
