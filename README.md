@@ -17,7 +17,7 @@ Here's how Jyva transforms your images through each step:
 Install Jyva from npm:
 
 ```bash
-npm install jyva
+npm install @pumpkinzzzzz/jyva
 ```
 
 Or for development/local setup:
