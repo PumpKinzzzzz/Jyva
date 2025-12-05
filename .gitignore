@@ -59,6 +59,12 @@ temp/
 # Optional eslint cache
 .eslintcache
 
+# pictures
+testpictures/desert*
+
+# build
+
+
 # Package lock files (choose one based on your preference)
 # yarn.lock
 # package-lock.json

@@ -1,4 +1,4 @@
-import * as UPNG from "upng-js";
+import UPNG from "upng-js";
 
 // Palette verte (4 tons fixes)
 const PALETTE: [number, number, number, number][] = [

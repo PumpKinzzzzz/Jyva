@@ -17,6 +17,7 @@ npm install
 ```
 
 Make sure you have the required dependencies:
+
 - `pngjs` for PNG manipulation
 - `upng-js` for PNG-8 palette encoding
 - TypeScript for development
@@ -25,7 +26,7 @@ Make sure you have the required dependencies:
 
 ### Basic Example
 
-![Original to Grayscale](testpictures/mononoke.png) → 
+![Original to Grayscale](testpictures/mononoke.png) →
 
 ```typescript
 import fs from "fs";
@@ -61,6 +62,7 @@ const gray = toGrayscale(rgba, 4); // 4 gray levels
 ```
 
 **Effect**: Converts color image to monochrome
+
 - Uses luminance weighting (0.299×R + 0.587×G + 0.114×B)
 - Quantizes to specified number of gray levels
 - Preserves image detail while reducing color complexity
@@ -78,6 +80,7 @@ const dithered = bayerDither(gray, width, 4, 8);
 ```
 
 **Effect**: Adds texture and reduces color banding
+
 - Creates patterned noise for smoother gradients
 - Matrix size 8 provides smoother transitions than 4
 - Distinctive retro/low-tech aesthetic
@@ -93,6 +96,7 @@ const tinted = makeGreen(dithered);
 ```
 
 **Effect**: Applies characteristic green colorization
+
 - Green color cast (R×0.85, G×1.0, B×0.75)
 - Maintains the dithered pattern
 - Creates the Low-tech Magazine aesthetic
@@ -112,7 +116,7 @@ Each step progressively reduces file size while maintaining visual appeal, perfe
 Run the test script to see the full pipeline in action:
 
 ```bash
-npx ts-node src/dev-test.ts
+npm run dev
 ```
 
 This will process `testpictures/mononoke.png` and generate all intermediate outputs.
